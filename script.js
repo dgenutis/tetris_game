@@ -131,6 +131,7 @@ function draw() {
   } else {
     updateEvery = updateEveryCurent;
   }
+
   //Update the game state
   if (!pauseGame) {
     ticks++;
@@ -160,11 +161,18 @@ function draw() {
   fill(255);
   noStroke();
   textSize(14);
-  text("Controls:\n↑\n← ↓ →\n", 75, 155);
-  text("Left and Right: \nmove side to side", 75, 230);
-  text("Up:\nrotate", 75, 280);
-  text("Down:\nfall faster", 75, 330);
-  text("R:\nreset game", 75, 380);
+  // Show pause
+  if (pauseGame === true) {
+    text("PAUSED", 75, 155);
+    textSize(12);
+    text("\nPress Enter to unpause", 75, 155);
+  } else {
+    text("Controls:\n↑\n← ↓ →\n", 75, 155);
+    text("Left and Right: \nmove side to side", 75, 230);
+    text("Up:\nrotate", 75, 280);
+    text("Down:\nfall faster", 75, 330);
+    text("R:\nreset game", 75, 380);
+  }
 
   //Show the game over text
   if (gameOver) {
@@ -186,6 +194,12 @@ function keyPressed() {
   if (keyCode === 82) {
     // 'R' key
     resetGame();
+  }
+  // Pause
+  if (keyCode === 13 && pauseGame === false) {
+    pauseGame = true;
+  } else if (keyCode === 13 && pauseGame === true) {
+    pauseGame = false;
   }
   if (!pauseGame) {
     if (keyCode === LEFT_ARROW) {
