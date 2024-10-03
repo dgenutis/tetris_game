@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+body {
+  margin: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+@media screen and (max-width: 768px) {
+  /* Stiliai, kurie bus taikomi, kai ekrano plotis yra mažesnis nei 768px */
+  body {
+    font-size: 14px;
+  }
+}
+canvas {
+  max-width: 100%; /* Nesitraukia daugiau nei tėvinis elementas */
+  max-height: 100%;
+  margin: auto; /* Centering */
+  display: block; /* Prevents extra space underneath */
+}
+
+@media (min-width: 600px) and (min-height: 540px) {
+  canvas {
+    width: 600px;
+    height: 540px;
+  }
+}
